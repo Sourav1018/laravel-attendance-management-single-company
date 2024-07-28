@@ -19,9 +19,8 @@
                 </h1>
             </div>
         </div>
-        <div class="flex flex-col h-full">
-            <div class="flex-grow">
-                <nav>
+        <div class="flex flex-col relative h-full">
+                <nav class="flex-1">
                     <ul class="m-2">
                         @foreach ($routes as $route)
                             <li
@@ -39,8 +38,8 @@
                         @endforeach
                     </ul>
                 </nav>
-            </div>
-            <div class="p-4 mt-auto">
+
+            <div class="absolute  bottom-14 p-4">
                 profile settings
             </div>
         </div>

@@ -8,10 +8,10 @@
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
-<body class="h-screen">
+<body>
     <div class="flex h-full">
             @livewire('layouts.sidebar')
-        <main class="flex-1  bg-gray-100 p-4">
+        <main class="flex-1 p-4">
             @yield('content')
         </main>
     </div>
