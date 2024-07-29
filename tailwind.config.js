@@ -5,7 +5,17 @@ export default {
     "./resources/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+        zIndex: {
+            '999' : '999'
+        },
+        width: {
+            '300' : '300px'
+        },
+        padding: {
+            '17' : '72px'
+        }
+    },
   },
   plugins: [],
 }
