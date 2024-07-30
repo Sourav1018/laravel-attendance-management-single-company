@@ -1,3 +1,3 @@
 <x-layouts.app>
-this is default
+this is attendance
 </x-layouts.app>
