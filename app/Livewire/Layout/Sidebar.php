@@ -11,6 +11,8 @@ class Sidebar extends Component
     public $toggelFlag;
 
     public $routes = [];
+
+    #[Session('openSubmenus')]
     public $openSubmenus = [];
 
     public function mount()
@@ -54,8 +56,9 @@ class Sidebar extends Component
             ],
 
         ];
-        foreach ($this->routes as $index => $route) {
-            $this->openSubmenus[$index] = false;
+
+        if (is_null($this->openSubmenus)) {
+            $this->openSubmenus = array_fill(0, count($this->routes), false);
         }
     }
 
@@ -65,6 +68,11 @@ class Sidebar extends Component
     }
 
     public function toggelSubmenu($index){
+        foreach ($this->openSubmenus as $i => $isOpen) {
+            if ($i != $index) {
+                $this->openSubmenus[$i] = false;
+            }
+        }
         $this->openSubmenus[$index] = !$this->openSubmenus[$index];
     }
     public function render()

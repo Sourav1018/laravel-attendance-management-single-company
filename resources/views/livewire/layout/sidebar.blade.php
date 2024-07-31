@@ -16,26 +16,31 @@
                 <li
                     class="py-2 px-4 duration-300 {{ $route['active'] ? 'bg-blue-700 border-r-4 border-r-blue-400' : '' }} hover:bg-blue-700 hover:cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <a href="{{ $route['route'] }}" class="flex items-center">
-                            <i
-                                class="{{ $route['icon'] }} text-[32px] {{ $toggelFlag ? 'mr-4' : '' }} duration-300"></i>
-                            <span class="ml-4">{{ $route['name'] }}</span>
-                        </a>
                         @if (!empty($route['submenus']))
+                            <span class="flex items-center flex-grow">
+                                <i
+                                    class="{{ $route['icon'] }} text-[32px] {{ $toggelFlag ? 'mr-4' : '' }} duration-300"></i>
+                                <span class="ml-4 w-48 truncate">{{ $route['name'] }}</span>
+                            </span>
                             <button wire:click="toggelSubmenu({{ $index }})"
                                 class="duration-300 {{ $openSubmenus[$index] ? 'rotate-180' : 'rotate-0' }}">
-                                <span
-                                    class="mdi mdi-arrow-down-drop-circle-outline text-2xl"></span>
+                                <span class="mdi mdi-arrow-down-drop-circle-outline text-2xl"></span>
                             </button>
+                        @else
+                            <a href="{{ $route['route'] }}" class="flex items-center">
+                                <i
+                                    class="{{ $route['icon'] }} text-[32px] {{ $toggelFlag ? 'mr-4' : '' }} duration-300"></i>
+                                <span class="ml-4">{{ $route['name'] }}</span>
+                            </a>
                         @endif
                     </div>
                     @if (!empty($route['submenus']))
-                        <ul class="ml-4 pl-4 {{ $openSubmenus[$index] ? '' : 'hidden' }} duration-300">
+                        <ul class="ml-4 pl-4 {{ $toggelFlag && $openSubmenus[$index] ? '' : 'hidden' }} duration-300">
                             @foreach ($route['submenus'] as $submenu)
                                 <li
                                     class="py-2 px-4 duration-300 {{ $submenu['active'] ? 'bg-blue-600 border-l-4 border-l-blue-400' : '' }} hover:bg-blue-600 hover:cursor-pointer">
-                                    <a href="{{ $submenu['route'] }}" class="flex items-center">
-                                        <span class="ml-4">{{ $submenu['name'] }}</span>
+                                    <a href="{{ $submenu['route'] }}" class="flex items-center duration-300">
+                                        <span class="ml-4 duration-300">{{ $submenu['name'] }}</span>
                                     </a>
                                 </li>
                             @endforeach
