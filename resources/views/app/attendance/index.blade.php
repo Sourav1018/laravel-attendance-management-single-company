@@ -1,3 +1,3 @@
 <x-layouts.app>
-this is attendance
+  <livewire:attendance.calendar>
 </x-layouts.app>

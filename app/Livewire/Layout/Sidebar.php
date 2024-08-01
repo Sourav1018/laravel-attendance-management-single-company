@@ -13,7 +13,7 @@ class Sidebar extends Component
     public $routes = [];
 
     #[Session('openSubmenus')]
-    public $openSubmenus = [];
+    public $openSubmenus;
 
     public function mount()
     {
@@ -23,29 +23,18 @@ class Sidebar extends Component
                 'route' => route('dashboard'),
                 'icon' => 'mdi mdi-view-dashboard-outline',
                 'active' => request()->routeIs('dashboard'),
-                'submenus' => [
-                    [
-                        'name' => 'some title',
-                        'route' => '#some-routes-1',
-                        'active' =>'',
-                    ],
-                    [
-                        'name' => 'some title',
-                        'route' => '#some-routes-2',
-                        'active' =>'',
-                    ],
-                ],
+                'submenus' => [],
             ],
             [
                 'name' => 'Attendance',
-                'route' => route('attendance'),
+                'route' => '',
                 'icon' => 'mdi mdi-calendar-clock',
-                'active' => request()->routeIs('attendance'),
+                'active' => '',
                 'submenus' => [
                     [
-                        'name' => 'some title',
-                        'route' => '#some-attendance-route-1',
-                        'active' => '',
+                        'name' => 'Check In and Out',
+                        'route' => route('attendance'),
+                        'active' => request()->routeIs('attendance'),
                     ],
                     [
                         'name' => 'some title',
