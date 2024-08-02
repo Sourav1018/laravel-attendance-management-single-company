@@ -2,42 +2,83 @@
 
 namespace App\Livewire\Attendance;
 
-use Livewire\Component;
 use Illuminate\Support\Carbon;
+use Livewire\Component;
 
 class Calendar extends Component
 {
     public $currentMonth;
     public $currentYear;
     public $daysInMonth;
-    public $attendanceRecords;
+    public $attendanceRecords = [];
+    public $years = [];
+    public $months = [];
 
     public function mount()
     {
         $this->currentMonth = Carbon::now()->month;
         $this->currentYear = Carbon::now()->year;
+
+        $this->years = range(2000, Carbon::now()->year);
+        $this->months = [
+            1  => 'January',
+            2  => 'February',
+            3  => 'March',
+            4  => 'April',
+            5  => 'May',
+            6  => 'June',
+            7  => 'July',
+            8  => 'August',
+            9  => 'September',
+            10 => 'October',
+            11 => 'November',
+            12 => 'December',
+        ];
+
+        $this->updateCalendarData();
+    }
+
+    public function updated($propertyName)
+    {
+        if ($propertyName === 'currentMonth' || $propertyName === 'currentYear') {
+            $this->updateCalendarData();
+        }
+    }
+
+    public function updateCalendarData()
+    {
         $this->daysInMonth = Carbon::createFromDate($this->currentYear, $this->currentMonth)->daysInMonth;
     }
 
-    public function previousMonth()
-{
-    $this->currentMonth--;
-    if ($this->currentMonth < 1) {
-        $this->currentMonth = 12;
-        $this->currentYear--;
+    public function updatedCurrentMonth()
+    {
+        $this->updateCalendarData();
     }
-    $this->daysInMonth = Carbon::createFromDate($this->currentYear, $this->currentMonth)->daysInMonth;
-}
 
-public function nextMonth()
-{
-    $this->currentMonth++;
-    if ($this->currentMonth > 12) {
-        $this->currentMonth = 1;
-        $this->currentYear++;
+    public function updatedCurrentYear()
+    {
+        $this->updateCalendarData();
     }
-    $this->daysInMonth = Carbon::createFromDate($this->currentYear, $this->currentMonth)->daysInMonth;
-}
+
+    public function previousMonth()
+    {
+        $this->currentMonth--;
+        if ($this->currentMonth < 1) {
+            $this->currentMonth = 12;
+            $this->currentYear--;
+        }
+        $this->daysInMonth = Carbon::createFromDate($this->currentYear, $this->currentMonth)->daysInMonth;
+    }
+
+    public function nextMonth()
+    {
+        $this->currentMonth++;
+        if ($this->currentMonth > 12) {
+            $this->currentMonth = 1;
+            $this->currentYear++;
+        }
+        $this->daysInMonth = Carbon::createFromDate($this->currentYear, $this->currentMonth)->daysInMonth;
+    }
     public function render()
     {
         return view('livewire.attendance.calendar');
