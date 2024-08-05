@@ -1,3 +1,4 @@
 <x-layouts.app>
-  <livewire:attendance.calendar>
+    <livewire:attendance.timer>
+    <livewire:attendance.calendar>
 </x-layouts.app>

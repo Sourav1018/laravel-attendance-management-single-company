@@ -9,3 +9,7 @@ Route::get('/dashboard', function () {
 Route::get('/attendance', function () {
     return view('app.attendance.index');
 })->name('attendance');
+
+Route::get('users', function(){
+    return view('app.users.index');
+})->name('users');

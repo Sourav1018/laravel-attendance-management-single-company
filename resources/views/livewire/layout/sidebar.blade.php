@@ -39,7 +39,7 @@
                     </div>
                 </li>
                     @if (!empty($route['submenus']))
-                        <ul class="mx-4 p-4 bg-blue-900 {{ $toggelFlag && $openSubmenus[$index] ? '' : 'hidden' }} duration-300 rounded">
+                        <ul class="mx-4 p-4 bg-blue-900 {{ $toggelFlag && $openSubmenus[$index] ? '' : 'hidden' }} duration-300 rounded mb-4">
                             @foreach ($route['submenus'] as $submenu)
                                 <li
                                     class="py-2 px-4 duration-300 {{ $submenu['active'] ? 'bg-blue-600 border-l-4 border-l-blue-400' : '' }} hover:bg-blue-500 hover:cursor-pointer">

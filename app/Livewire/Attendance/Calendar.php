@@ -50,35 +50,7 @@ class Calendar extends Component
         $this->daysInMonth = Carbon::createFromDate($this->currentYear, $this->currentMonth)->daysInMonth;
     }
 
-    public function updatedCurrentMonth()
-    {
-        $this->updateCalendarData();
-    }
 
-    public function updatedCurrentYear()
-    {
-        $this->updateCalendarData();
-    }
-
-    public function previousMonth()
-    {
-        $this->currentMonth--;
-        if ($this->currentMonth < 1) {
-            $this->currentMonth = 12;
-            $this->currentYear--;
-        }
-        $this->daysInMonth = Carbon::createFromDate($this->currentYear, $this->currentMonth)->daysInMonth;
-    }
-
-    public function nextMonth()
-    {
-        $this->currentMonth++;
-        if ($this->currentMonth > 12) {
-            $this->currentMonth = 1;
-            $this->currentYear++;
-        }
-        $this->daysInMonth = Carbon::createFromDate($this->currentYear, $this->currentMonth)->daysInMonth;
-    }
     public function render()
     {
         return view('livewire.attendance.calendar');

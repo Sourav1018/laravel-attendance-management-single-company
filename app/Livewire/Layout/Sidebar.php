@@ -43,6 +43,13 @@ class Sidebar extends Component
                     ],
                 ],
             ],
+            [
+                'name' => 'Users',
+                'route' => route('users'),
+                'icon' => 'mdi mdi-account-group-outline',
+                'active' => request()->routeIs('users'),
+                'submenus' => [],
+            ],
 
         ];
 
