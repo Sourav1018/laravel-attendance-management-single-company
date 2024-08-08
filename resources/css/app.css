@@ -1,10 +1,7 @@
-@import "custom.css";
-@import "./node_modules/@mdi/font/css/materialdesignicons.css";
+@import "../../node_modules/@mdi/font/css/materialdesignicons.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "custom.css";
 *,
 *::before,
 *::after {
